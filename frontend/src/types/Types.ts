@@ -5,6 +5,7 @@ export type LayoutParamsType = {
   history?: boolean;
   profile?: boolean;
   logout?: boolean;
+  message?: boolean;
 };
 export type HomeParams = {
   children: React.ReactNode;
@@ -14,4 +15,5 @@ export type HomeParams = {
   history?: boolean;
   profile?: boolean;
   logout?: boolean;
+  message?: boolean;
 };

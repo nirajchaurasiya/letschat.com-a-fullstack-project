@@ -26,8 +26,16 @@ export default function Linkscontainer() {
       </Link>
       <div className="tab-icons">
         <NavLink to="/">
-          <div className="icon">
-            {newPathName === "" ? <BiSolidHome /> : <BiHome />}
+          <div
+            className={`icon ${
+              newPathName?.split("/")[0] === "messages" && " active"
+            }`}
+          >
+            {newPathName === "" || newPathName?.split("/")[0] === "messages" ? (
+              <BiSolidHome />
+            ) : (
+              <BiHome />
+            )}
           </div>
         </NavLink>
         <NavLink to="/search">

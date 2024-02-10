@@ -3,6 +3,9 @@ import Linkscontainer from "./Linkscontainer";
 import MessageCard from "./MessageCard";
 import { BiSolidLock } from "react-icons/bi";
 import { HomeParams } from "../types/Types";
+import { useContext } from "react";
+import { ToggleProfile } from "../context/ToggleProfile";
+import { messageCard } from "../data/fakedata";
 
 export default function Home({
   children,
@@ -12,31 +15,69 @@ export default function Home({
   profile,
   search,
   logout,
+  message,
 }: HomeParams) {
+  const showProfileOptions = useContext(ToggleProfile);
+
+  if (!showProfileOptions) {
+    return null;
+  }
+
+  const { showProfile } = showProfileOptions;
+
   return (
     <section className="home-container">
       <div className="home-mid-container">
         {/* All the links container or tab simply */}
         <div
-          className={`${home ? "links-container" : "no-home-links-container"}`}
+          className={`${
+            message ? "links-container" : "no-home-links-container"
+          }`}
         >
           <Linkscontainer />
         </div>
 
         {/* All the user who previously connected user */}
-
         {home && (
           <div
             className={`${
-              home ? "all-users-container" : "no-home-all-users-container"
+              message && showProfile
+                ? "all-users-container"
+                : "no-home-all-users-container"
             }`}
           >
             <div className="top-header pt-pl-6">
               <p>All Messages</p>
             </div>
             <div className="card-messages">
-              {[1, 2, 3, 4, 5, 6, 7].map((e) => (
-                <MessageCard key={e} index={e} active={e === 1 && true} />
+              {messageCard.map((card) => (
+                <MessageCard key={card.id} data={card} />
+              ))}
+              <div className="encryption-msg">
+                <p>
+                  <BiSolidLock />
+                </p>
+                <p>
+                  Your personal messages are <span>end-to-end encrypted</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+        {message && (
+          <div
+            className={`${
+              message && showProfile
+                ? "all-users-container"
+                : "no-home-all-users-container"
+            }`}
+          >
+            <div className="top-header pt-pl-6">
+              <p>All Messages</p>
+            </div>
+            <div className="card-messages">
+              {messageCard.map((card) => (
+                <MessageCard key={card.id} data={card} />
               ))}
               <div className="encryption-msg">
                 <p>
@@ -52,7 +93,7 @@ export default function Home({
         {groupMessages && (
           <div
             className={`${
-              home ? "all-users-container" : "no-home-all-users-container"
+              message ? "all-users-container" : "no-home-all-users-container"
             }`}
           >
             <div className="top-header pt-pl-6">
@@ -63,7 +104,7 @@ export default function Home({
         {history && (
           <div
             className={`${
-              home ? "all-users-container" : "no-home-all-users-container"
+              message ? "all-users-container" : "no-home-all-users-container"
             }`}
           >
             <div className="top-header pt-pl-6">
@@ -85,7 +126,7 @@ export default function Home({
         {search && (
           <div
             className={`${
-              home ? "all-users-container" : "no-home-all-users-container"
+              message ? "all-users-container" : "no-home-all-users-container"
             }`}
           >
             <div className="top-header pt-pl-6">
@@ -96,7 +137,7 @@ export default function Home({
         {logout && (
           <div
             className={`${
-              home ? "all-users-container" : "no-home-all-users-container"
+              message ? "all-users-container" : "no-home-all-users-container"
             }`}
           >
             <div className="top-header pt-pl-6">
@@ -108,7 +149,9 @@ export default function Home({
         {/* Show Message container */}
         <div
           className={`${
-            home ? "show-message-container" : "no-home-show-message-container"
+            message && showProfile
+              ? "show-message-container"
+              : "no-home-show-message-container"
           }`}
         >
           {children}
@@ -116,10 +159,10 @@ export default function Home({
 
         {/* profile-container */}
 
-        {home && (
+        {message && showProfile && (
           <div
             className={`${
-              home
+              message && showProfile
                 ? "rightbar-profile-container"
                 : "no-home-rightbar-profile-container"
             }`}

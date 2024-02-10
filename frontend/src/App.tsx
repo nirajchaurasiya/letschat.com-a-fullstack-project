@@ -98,6 +98,14 @@ export default function App() {
               </section>
             }
           />
+          <Route
+            path="/messages/:userId"
+            element={
+              <section className="layout">
+                <Layout message={true} />
+              </section>
+            }
+          />
         </Routes>
       </main>
     </BrowserRouter>

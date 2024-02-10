@@ -1,6 +1,7 @@
 import Home from "../components/Home";
+import SelectaMessage from "../components/SelectaMessage";
+import SingleMessage from "../components/SingleMessage";
 import { LayoutParamsType } from "../types/Types";
-import { getLocation } from "../utils/getLocation";
 
 export default function Layout({
   home,
@@ -9,8 +10,8 @@ export default function Layout({
   profile,
   search,
   logout,
+  message,
 }: LayoutParamsType) {
-  const location = getLocation();
   return (
     <Home
       home={home}
@@ -19,8 +20,10 @@ export default function Layout({
       profile={profile}
       search={search}
       logout={logout}
+      message={message}
     >
-      <p>hello {location}</p>
+      {home && <SelectaMessage />}
+      {message && <SingleMessage />}
     </Home>
   );
 }
