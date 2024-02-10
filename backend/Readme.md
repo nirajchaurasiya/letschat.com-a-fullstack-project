@@ -1,1 +1,1 @@
-## Chat app frontend
+## Chat app backend
