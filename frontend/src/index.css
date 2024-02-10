@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --dark-theme-text: white;
+  --dark-theme-bg: rgb(17, 17, 17);
+
+  --light-theme-text: black;
+  --light-theme-bg: white;
+
+  --link-theme: hsl(120, 100%, 64%);
+}
+body {
+  background-color: var(--dark-theme-bg);
+  color: var(--dark-theme-text);
+  font-family: "Open Sans", sans-serif;
+}
+a {
+  color: var(--link-theme);
+  text-decoration: none;
+}
+img {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+}

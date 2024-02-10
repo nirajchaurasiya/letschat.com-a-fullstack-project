@@ -1,0 +1,34 @@
+.links-container .logo,
+.no-home-links-container .logo {
+  text-align: center;
+}
+
+.links-container .logo img,
+.no-home-links-container .logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.tab-icons {
+  display: flex;
+  flex-direction: column;
+}
+.tab-icons div {
+  width: 100%;
+  text-align: center;
+  padding: 7px 0;
+}
+.tab-icons div svg {
+  font-size: 30px;
+}
+
+.tab-icons div:hover {
+  background-color: rgb(26, 26, 26);
+}
+.active {
+  background-color: rgb(28, 28, 28);
+}
+a .icon {
+  color: white;
+}
