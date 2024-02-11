@@ -6,9 +6,11 @@ import MyMessagePart from "../sub-components/MyMessagePart";
 import OtherPersonMessagePart from "../sub-components/OtherPersonMessagePart";
 import { ToggleProfile } from "../context/ToggleProfile";
 import { BiArrowBack } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 export default function SingleMessage() {
   const messageContainerRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
   const showProfileOptions = useContext(ToggleProfile);
   if (!showProfileOptions) {
     return null;
@@ -28,12 +30,14 @@ export default function SingleMessage() {
       }, 100);
     }
   });
-
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <div className="single-message-container">
       <div className="single-message-container-header">
         <div className="back-sign">
-          <BiArrowBack />
+          <BiArrowBack onClick={() => goBack()} />
           <div
             className="account-details"
             onClick={() => setShowProfile(!showProfile)}
@@ -48,20 +52,22 @@ export default function SingleMessage() {
         </div>
       </div>
       {/* All Messages */}
-      <div className="alert_msg">
-        <p>Created this chat on May 5, 2024</p>
-      </div>
-      <div ref={messageContainerRef}>
-        {/* Message Container */}
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((e) => (
-          <div key={e} className="users_conversation">
-            <MyMessagePart />
-            <OtherPersonMessagePart />
-          </div>
-        ))}
-        <br />
-        <br />
-        <br />
+      <div className="user-msg-cntainer">
+        <div className="alert_msg">
+          <p>Created this chat on May 5, 2024</p>
+        </div>
+        <div ref={messageContainerRef}>
+          {/* Message Container */}
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((e) => (
+            <div key={e} className="users_conversation">
+              <MyMessagePart />
+              <OtherPersonMessagePart />
+            </div>
+          ))}
+          <br />
+          <br />
+          <br />
+        </div>
       </div>
       {/* Input Box */}
       <div className="input-box">

@@ -36,12 +36,10 @@
 /* all user container */
 .all-users-container {
   width: 25%;
-  transition: 0.1s;
   overflow-y: scroll;
 }
 .no-home-all-users-container {
   width: 35%;
-  transition: 0.4s;
   overflow-y: scroll;
 }
 .pt-pl-6 {
@@ -90,9 +88,32 @@
 }
 /* Rightbar profile container */
 .rightbar-profile-container {
-  background-color: blue;
+  /* background-color: blue; */
   width: 25%;
 }
 .no-home-rightbar-profile-container {
   width: 0;
+}
+.contact-info-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #242424;
+  padding-bottom: 21px;
+  gap: 15px;
+}
+.contact-info-header p {
+  display: flex;
+}
+.contact-info-header p svg {
+  font-size: 25px;
+  padding: 5px;
+}
+.contact-info-header p:last-child {
+  font-size: 19px;
+  font-weight: 700;
+}
+.contact-info-header p svg:hover {
+  background-color: #a39999;
+  border-radius: 100%;
+  cursor: pointer;
 }

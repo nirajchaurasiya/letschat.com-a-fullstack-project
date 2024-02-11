@@ -6,6 +6,7 @@ import { HomeParams } from "../types/Types";
 import { useContext } from "react";
 import { ToggleProfile } from "../context/ToggleProfile";
 import { messageCard } from "../data/fakedata";
+import { ImCross } from "react-icons/im";
 
 export default function Home({
   children,
@@ -23,7 +24,7 @@ export default function Home({
     return null;
   }
 
-  const { showProfile } = showProfileOptions;
+  const { showProfile, setShowProfile } = showProfileOptions;
 
   return (
     <section className="home-container">
@@ -167,7 +168,12 @@ export default function Home({
                 : "no-home-rightbar-profile-container"
             }`}
           >
-            <p>profile container</p>
+            <div className="contact-info-header pt-pl-6">
+              <p onClick={() => setShowProfile(!showProfile)}>
+                <ImCross />
+              </p>
+              <p>Contact Info</p>
+            </div>
           </div>
         )}
       </div>

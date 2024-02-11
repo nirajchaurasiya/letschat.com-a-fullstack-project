@@ -6,10 +6,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Layout/Layout";
 export default function App() {
   const [socket, setSocket] = useState<Socket | null>(null);
-
+  const REACT_APP_BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     setSocket(
-      io("http://localhost:8000", {
+      io(REACT_APP_BACKEND_URL, {
         withCredentials: true,
       })
     );
