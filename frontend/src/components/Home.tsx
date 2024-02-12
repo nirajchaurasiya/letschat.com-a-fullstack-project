@@ -8,6 +8,7 @@ import { ToggleProfile } from "../context/ToggleProfile";
 import { messageCard } from "../data/fakedata";
 import { ImCross } from "react-icons/im";
 import { MdBlock, MdDelete } from "react-icons/md";
+import SearchComponent from "./SearchComponent";
 
 export default function Home({
   children,
@@ -134,6 +135,7 @@ export default function Home({
             <div className="top-header pt-pl-6">
               <p>Search</p>
             </div>
+            <SearchComponent />
           </div>
         )}
         {logout && (
@@ -187,8 +189,8 @@ export default function Home({
             <div className="profile_about">
               <p>About</p>
               <p>
-                Sales Strategist | Graphics designer | Christian | Product
-                Designer
+                Fullstack developer committed to be the world's best Robotics
+                Engineer • Tweets around web development | AI | ML
               </p>
             </div>
             <div className="msg_credentials">

@@ -1,6 +1,7 @@
 import Home from "../components/Home";
 import SelectaMessage from "../components/SelectaMessage";
 import SingleMessage from "../components/SingleMessage";
+import ViewSearchedPerson from "../components/ViewSearchedPerson";
 import { LayoutParamsType } from "../types/Types";
 
 export default function Layout({
@@ -24,6 +25,7 @@ export default function Layout({
     >
       {home && <SelectaMessage />}
       {message && <SingleMessage />}
+      {search && <ViewSearchedPerson />}
     </Home>
   );
 }
