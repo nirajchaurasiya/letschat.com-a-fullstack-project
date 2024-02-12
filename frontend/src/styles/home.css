@@ -90,8 +90,14 @@
 .rightbar-profile-container {
   /* background-color: blue; */
   width: 25%;
+  overflow-y: scroll;
 }
 .no-home-rightbar-profile-container {
+  width: 0;
+  overflow-y: scroll;
+}
+.rightbar-profile-container::-webkit-scrollbar,
+.no-home-rightbar-profile-container::-webkit-scrollbar {
   width: 0;
 }
 .contact-info-header {
@@ -116,4 +122,110 @@
   background-color: #a39999;
   border-radius: 100%;
   cursor: pointer;
+}
+.profile_details {
+  display: grid;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(34, 34, 34);
+}
+.profile_details .profile_image {
+  width: 100%;
+}
+.profile_details .profile_image img {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  background-position: center;
+  background-color: #adadad;
+}
+.profile_name_contacts {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.profile_name_contacts p {
+  font-size: 17px;
+  font-weight: 700;
+}
+.profile_name_contacts span {
+  color: #adadad;
+}
+.profile_about {
+  padding-top: 15px;
+  display: grid;
+  gap: 5px;
+  padding-left: 25px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgb(34, 34, 34);
+}
+.profile_about p:first-child {
+  color: #a39999;
+  font-size: 17px;
+  margin-bottom: 3px;
+}
+
+.profile_about p:last-child {
+  font-size: 16px;
+  font-weight: 500;
+}
+.msg_credentials {
+  display: flex;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgb(34, 34, 34);
+  gap: 10px;
+  padding-left: 25px;
+  padding-top: 20px;
+}
+
+.msg_credentials p svg {
+  font-size: 17px;
+  margin-bottom: -4px;
+}
+.msg_credentials .msg_credentails_message {
+  display: grid;
+  gap: 3px;
+}
+.msg_credentials .msg_credentails_message p:first-child {
+  font-size: 17px;
+  font-weight: 700;
+}
+.msg_credentials .msg_credentails_message p:last-child {
+  color: #a39999;
+  font-size: 14px;
+}
+.user_block_option {
+  display: flex;
+  flex-direction: column;
+}
+.danger-zone {
+  padding: 10px 15px 10px 17px;
+  font-size: 17px;
+  user-select: none;
+  font-weight: 700;
+  color: rgb(239, 71, 71);
+  border-bottom: 1px solid #252525;
+}
+.delete_chat p {
+  display: flex;
+}
+
+.delete_chat {
+  color: rgb(239, 71, 71);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px 10px 15px;
+  cursor: pointer;
+}
+.delete_chat:hover {
+  background-color: #282828;
+}
+.delete_chat p svg {
+  font-size: 25px;
 }

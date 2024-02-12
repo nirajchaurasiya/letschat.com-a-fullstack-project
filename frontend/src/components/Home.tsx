@@ -1,12 +1,13 @@
 import "../styles/home.css";
 import Linkscontainer from "./Linkscontainer";
 import MessageCard from "./MessageCard";
-import { BiSolidLock } from "react-icons/bi";
+import { BiSolidDislike, BiSolidLock } from "react-icons/bi";
 import { HomeParams } from "../types/Types";
 import { useContext } from "react";
 import { ToggleProfile } from "../context/ToggleProfile";
 import { messageCard } from "../data/fakedata";
 import { ImCross } from "react-icons/im";
+import { MdBlock, MdDelete } from "react-icons/md";
 
 export default function Home({
   children,
@@ -173,6 +174,53 @@ export default function Home({
                 <ImCross />
               </p>
               <p>Contact Info</p>
+            </div>
+            <div className="profile_details">
+              <div className="profile_image">
+                <img src="/user1.jpg" alt="" />
+              </div>
+              <div className="profile_name_contacts">
+                <p>Niraj Chaurasiya</p>
+                <span>nirajchaurasiya@gmail.com</span>
+              </div>
+            </div>
+            <div className="profile_about">
+              <p>About</p>
+              <p>
+                Sales Strategist | Graphics designer | Christian | Product
+                Designer
+              </p>
+            </div>
+            <div className="msg_credentials">
+              <p>
+                <BiSolidLock />
+              </p>
+              <div className="msg_credentails_message">
+                <p>Credentials</p>
+                <p>Messages are end-to-end encrypted.</p>
+              </div>
+            </div>
+            <div className="user_block_option">
+              <p className="danger-zone">Danger Zone</p>
+              <div className="delete_chat">
+                <p>
+                  <MdBlock />
+                </p>
+                <span>Block Niraj Chaurasiya</span>
+              </div>
+              <div className="delete_chat">
+                <p>
+                  <BiSolidDislike />
+                </p>
+                <span>Report Niraj Chaurasiya</span>
+              </div>
+
+              <div className="delete_chat">
+                <p>
+                  <MdDelete />
+                </p>
+                <span>Delete chat</span>
+              </div>
             </div>
           </div>
         )}
