@@ -3,11 +3,14 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import ToggleProfileProvider from "./context/ToggleProfile.tsx";
+import SearchUserProvider from "./context/searchedContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ToggleProfileProvider>
-      <App />
-    </ToggleProfileProvider>
+    <SearchUserProvider>
+      <ToggleProfileProvider>
+        <App />
+      </ToggleProfileProvider>
+    </SearchUserProvider>
   </React.StrictMode>
 );

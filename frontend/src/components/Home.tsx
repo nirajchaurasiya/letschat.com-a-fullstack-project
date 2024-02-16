@@ -2,13 +2,15 @@ import "../styles/home.css";
 import Linkscontainer from "./Linkscontainer";
 import MessageCard from "./MessageCard";
 import { BiSolidDislike, BiSolidLock } from "react-icons/bi";
-import { HomeParams } from "../types/Types";
+import { GroupedMemberType, HomeParams } from "../types/Types";
 import { useContext } from "react";
 import { ToggleProfile } from "../context/ToggleProfile";
 import { messageCard } from "../data/fakedata";
 import { ImCross } from "react-icons/im";
 import { MdBlock, MdDelete } from "react-icons/md";
 import SearchComponent from "./SearchComponent";
+import { groupdata } from "../data/groupdata";
+import { SearchUserContext } from "../context/searchedContext";
 
 export default function Home({
   children,
@@ -19,8 +21,13 @@ export default function Home({
   search,
   logout,
   message,
+  isGroup,
 }: HomeParams) {
   const showProfileOptions = useContext(ToggleProfile);
+
+  const searchUserOptions = useContext(SearchUserContext);
+  if (!searchUserOptions) return null;
+  const { searchUser } = searchUserOptions;
 
   if (!showProfileOptions) {
     return null;
@@ -96,11 +103,26 @@ export default function Home({
         {groupMessages && (
           <div
             className={`${
-              message ? "all-users-container" : "no-home-all-users-container"
+              message && showProfile
+                ? "all-users-container"
+                : "no-home-all-users-container"
             }`}
           >
             <div className="top-header pt-pl-6">
               <p>Group Messages</p>
+            </div>
+            <div className="card-messages">
+              {groupdata.map((card) => (
+                <MessageCard key={card.id} data={card} />
+              ))}
+              <div className="encryption-msg">
+                <p>
+                  <BiSolidLock />
+                </p>
+                <p>
+                  Your personal messages are <span>end-to-end encrypted</span>
+                </p>
+              </div>
             </div>
           </div>
         )}
@@ -135,7 +157,9 @@ export default function Home({
             <div className="top-header pt-pl-6">
               <p>Search</p>
             </div>
-            <SearchComponent />
+            <SearchComponent
+              users={searchUser as unknown as GroupedMemberType}
+            />
           </div>
         )}
         {logout && (
@@ -152,8 +176,9 @@ export default function Home({
 
         {/* Show Message container */}
         <div
+          style={isGroup ? { width: "60%" } : {}}
           className={`${
-            message && showProfile
+            isGroup || (message && showProfile)
               ? "show-message-container"
               : "no-home-show-message-container"
           }`}

@@ -1,4 +1,5 @@
 import Home from "../components/Home";
+import Profile from "../components/Profile";
 import SelectaMessage from "../components/SelectaMessage";
 import SingleMessage from "../components/SingleMessage";
 import ViewSearchedPerson from "../components/ViewSearchedPerson";
@@ -12,6 +13,7 @@ export default function Layout({
   search,
   logout,
   message,
+  isGroup,
 }: LayoutParamsType) {
   return (
     <Home
@@ -22,10 +24,14 @@ export default function Layout({
       search={search}
       logout={logout}
       message={message}
+      isGroup={isGroup}
     >
       {home && <SelectaMessage />}
       {message && <SingleMessage />}
       {search && <ViewSearchedPerson />}
+      {groupMessages && isGroup && (
+        <Profile groupMessages={groupMessages} isGroup={isGroup} />
+      )}
     </Home>
   );
 }

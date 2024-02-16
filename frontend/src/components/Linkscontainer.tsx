@@ -45,7 +45,12 @@ export default function Linkscontainer() {
         </NavLink>
         <NavLink to="/group-messages">
           <div className="icon">
-            {newPathName === "group-messages" ? <BiSolidGroup /> : <BiGroup />}
+            {newPathName === "" ||
+            newPathName?.split("/")[0] === "group-messages" ? (
+              <BiSolidGroup />
+            ) : (
+              <BiGroup />
+            )}
           </div>
         </NavLink>
         <NavLink to="/user-history">

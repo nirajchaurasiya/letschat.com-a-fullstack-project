@@ -3,14 +3,8 @@ import "../styles/card-message.css";
 import { getDifferentBgColour } from "../utils/getdifferentbgcolours";
 import { useContext } from "react";
 import { ToggleProfile } from "../context/ToggleProfile";
-type MessageCardType = {
-  data: {
-    id: string;
-    name: string;
-    lastMessage: string;
-    lastMessageDate: string;
-  };
-};
+import { MessageCardType } from "../types/Types";
+
 export default function MessageCard({ data }: MessageCardType) {
   const allValues = useContext(ToggleProfile);
   if (!allValues) return null;
@@ -20,20 +14,32 @@ export default function MessageCard({ data }: MessageCardType) {
 
   return (
     <NavLink
-      to={`/messages/${data?.id}`}
+      to={
+        data?.isGroup ? `/group-messages/${data?.id}` : `/messages/${data?.id}`
+      }
       onClick={() => {
         if (userId !== data?.id) setShowProfile(false);
       }}
     >
       <div className={`card-message`}>
         <div className="card-profile">
-          {/* <img src="/user1.jpg" alt="user-pic" /> */}
-          <p className="text-bg" style={{ backgroundColor: getColours }}>
-            {data?.name?.slice(0, 1)}
-          </p>
+          {data.isGroup ? (
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNLj_8pzpibGhDNjYNR_GccHZZ5ITc656d5g&usqp=CAU"
+              alt="user-pic"
+            />
+          ) : (
+            <p className="text-bg" style={{ backgroundColor: getColours }}>
+              {data?.name?.slice(0, 1)}
+            </p>
+          )}
           <div className="user-name-msg">
             <p>{data.name}</p>
-            <p>{data.lastMessage}</p>
+            <p>
+              {data.isGroup
+                ? data?.from + " : " + data.lastMessage
+                : data.lastMessage}
+            </p>
           </div>
         </div>
 

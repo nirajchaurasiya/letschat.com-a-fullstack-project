@@ -15,7 +15,7 @@ export const messageCard = [
   },
   {
     id: "61597f329b4fba1e7d5e0c5a",
-    name: "Alice Smith",
+    name: "John Smith",
     lastMessage: "What's up?",
     lastMessageDate: "5 hr ago",
     bio: "Artist, traveler, and dreamer.",

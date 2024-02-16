@@ -31,3 +31,11 @@ img {
   -ms-user-select: none;
   pointer-events: none;
 }
+.all-members {
+  height: fit-content;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.all-members::-webkit-scrollbar {
+  width: 0px;
+}

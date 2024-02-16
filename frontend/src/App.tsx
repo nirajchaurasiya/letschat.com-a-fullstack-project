@@ -74,6 +74,15 @@ export default function App() {
               </section>
             }
           />
+
+          <Route
+            path="/group-messages/:groupId"
+            element={
+              <section className="layout">
+                <Layout groupMessages={true} isGroup />
+              </section>
+            }
+          />
           <Route
             path="/user-history"
             element={
