@@ -11,6 +11,7 @@ import { MdBlock, MdDelete } from "react-icons/md";
 import SearchComponent from "./SearchComponent";
 import { groupdata } from "../data/groupdata";
 import { SearchUserContext } from "../context/searchedContext";
+import UserProfile from "./UserProfile";
 
 export default function Home({
   children,
@@ -146,6 +147,7 @@ export default function Home({
             <div className="top-header pt-pl-6">
               <p>Profile</p>
             </div>
+            <UserProfile />
           </div>
         )}
         {search && (

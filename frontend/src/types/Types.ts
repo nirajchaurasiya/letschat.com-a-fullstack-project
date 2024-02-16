@@ -7,6 +7,9 @@ export type LayoutParamsType = {
   logout?: boolean;
   message?: boolean;
   isGroup?: boolean;
+  userInformation?: boolean;
+  blockedAccounts?: boolean;
+  deleteAccount?: boolean;
 };
 
 export type MessageCardType = {

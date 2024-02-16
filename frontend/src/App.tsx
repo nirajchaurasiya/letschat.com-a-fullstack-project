@@ -99,6 +99,36 @@ export default function App() {
               </section>
             }
           />
+          {/*  */}
+
+          <Route
+            path="/profile/user-information"
+            element={
+              <section className="layout">
+                <Layout profile={true} userInformation />
+              </section>
+            }
+          />
+
+          <Route
+            path="/profile/blocked-accounts"
+            element={
+              <section className="layout">
+                <Layout profile={true} blockedAccounts />
+              </section>
+            }
+          />
+
+          <Route
+            path="/profile/delete-account"
+            element={
+              <section className="layout">
+                <Layout profile={true} deleteAccount />
+              </section>
+            }
+          />
+
+          {/*  */}
           <Route
             path="/logout"
             element={
