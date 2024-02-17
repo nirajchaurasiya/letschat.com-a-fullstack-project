@@ -75,9 +75,7 @@ export default function Layout({
           <p>Search an user to view</p>
         </div>
       )}
-      {groupMessages && isGroup && (
-        <Profile widthOfWindow={widthOfWindow} isGroup={isGroup} />
-      )}
+      {groupMessages && isGroup && <Profile isGroup={isGroup} />}
       {groupMessages && widthOfWindow > 575 && !isGroup && (
         <div
           style={{

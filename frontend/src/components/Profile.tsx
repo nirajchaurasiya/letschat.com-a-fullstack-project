@@ -8,13 +8,7 @@ import { useParams } from "react-router-dom";
 import { GroupedUserType } from "../types/Types";
 import { groupdata } from "../data/groupdata";
 
-export default function Profile({
-  isGroup,
-  widthOfWindow,
-}: {
-  isGroup?: boolean;
-  widthOfWindow: number;
-}) {
+export default function Profile({ isGroup }: { isGroup?: boolean }) {
   const [profile, setProfile] = useState<GroupedUserType | {}>({});
   const allValues = useContext(ToggleProfile);
   if (!allValues) return null;
@@ -98,7 +92,6 @@ export default function Profile({
         </div>
         <div className="all-members">
           <SearchComponent
-            widthOfWindow={widthOfWindow}
             noSearch
             users={(profile as GroupedUserType).members}
           />
