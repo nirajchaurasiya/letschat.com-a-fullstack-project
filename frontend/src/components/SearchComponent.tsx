@@ -28,7 +28,9 @@ export default function SearchComponent({
     event.preventDefault();
     const getUserFromSearch = getSearchedUser(searchQuery);
     getUserFromSearch.length < 1 && setInitialMsg("No user found");
+    // if (getUserFromSearch.length < 1) {
     setSearchUser(getUserFromSearch);
+    // }
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

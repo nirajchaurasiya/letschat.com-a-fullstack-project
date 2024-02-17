@@ -1,6 +1,7 @@
 .register-container {
   display: flex;
   justify-content: center;
+  height: 100vh;
 }
 .logo img {
   width: 100%;
@@ -8,18 +9,21 @@
   margin-top: 20px;
 }
 .register-mid-container {
-  width: 100vw;
   display: flex;
-  height: 100vh;
   justify-content: center;
   align-items: center;
 }
 .form-control {
-  width: 40vw;
+  width: 500px;
   background-color: rgb(18, 19, 19);
   overflow-y: scroll;
   border: 1px solid rgb(35, 34, 34);
   border-radius: 10px;
+}
+@media (max-width: 550px) {
+  .form-control {
+    width: 100%;
+  }
 }
 .form-control::-webkit-scrollbar {
   width: 0;

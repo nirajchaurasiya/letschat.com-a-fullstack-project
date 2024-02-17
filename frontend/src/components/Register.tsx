@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import "../styles/register.css";
 import axios from "axios";
 export default function Register() {
-  const checkBackend = () => {
+  const checkBackend = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    console.log("register");
     axios
       .get("/backend/get")
       .then((data) => {
@@ -12,10 +14,11 @@ export default function Register() {
         console.log(err);
       });
   };
+
   return (
     <div className="register-container">
       <div className="register-mid-container">
-        <div className="form-control">
+        <form onSubmit={checkBackend} className="form-control">
           <div className="form-heading">
             <div className="logo-image">
               <img src="/logo2.png" alt="" />
@@ -45,7 +48,7 @@ export default function Register() {
           </div>
           {/* Button */}
           <div className="btn-control">
-            <button onClick={checkBackend}>Register</button>
+            <button>Register</button>
           </div>
           <div
             style={{ display: "flex", gap: "5px", paddingTop: "15px" }}
@@ -56,7 +59,7 @@ export default function Register() {
           </div>
           <br />
           <br />
-        </div>
+        </form>
       </div>
     </div>
   );
