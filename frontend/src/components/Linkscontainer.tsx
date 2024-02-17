@@ -29,7 +29,7 @@ export default function Linkscontainer() {
     <div className="links">
       <Link to="/">
         <div className="logo">
-          <img src="/logo.png" alt="logo" />
+          <img src="/logo2.png" alt="logo" />
         </div>
       </Link>
       <div className="tab-icons">
@@ -96,7 +96,7 @@ export default function Linkscontainer() {
             "active"
           }`}
         >
-          <NavLink to="/profile">
+          <NavLink to="/profile/user-information">
             <div>
               {newPathName === "profile" ||
               newPathName?.split("/")[0] === "profile" ? (
