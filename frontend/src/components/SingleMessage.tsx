@@ -7,6 +7,7 @@ import OtherPersonMessagePart from "../sub-components/OtherPersonMessagePart";
 import { ToggleProfile } from "../context/ToggleProfile";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { IoMdSend } from "react-icons/io";
 
 export default function SingleMessage() {
   const messageContainerRef = useRef<HTMLDivElement>(null);
@@ -64,9 +65,6 @@ export default function SingleMessage() {
               <OtherPersonMessagePart />
             </div>
           ))}
-          <br />
-          <br />
-          <br />
         </div>
       </div>
       {/* Input Box */}
@@ -82,7 +80,9 @@ export default function SingleMessage() {
             <input type="text" placeholder="Enter message" />
           </div>
           <div className="send-btn">
-            <button>Send</button>
+            <button>
+              <IoMdSend />
+            </button>
           </div>
         </div>
       </div>

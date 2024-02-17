@@ -1,4 +1,4 @@
-@media (max-width: 500px) {
+@media (max-width: 1050px) {
   .links-container .logo,
   .no-home-links-container .logo {
     display: none;
@@ -18,6 +18,9 @@
     justify-content: space-between;
     width: 100vw;
   }
+}
+.links {
+  z-index: 10000;
 }
 .links-container .logo,
 .no-home-links-container .logo {

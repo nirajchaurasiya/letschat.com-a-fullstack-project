@@ -17,7 +17,9 @@ export default function BlockedAccount() {
                 <div>
                   <div className="blocked-user-name">
                     <p>Niraj Chaurasiya</p>
-                    <p>nirajkumarchaurasiya@gmail.com</p>
+                    <p style={{ wordBreak: "break-all" }}>
+                      nirajkumarchaurasiya@gmail.com
+                    </p>
                   </div>
                   <div className="blocked-date">
                     <p>

@@ -4,8 +4,13 @@ import { BiBlock } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { messageCard } from "../data/fakedata";
 import { ViewSearchedPersonType } from "../types/Types";
+import Top from "../sub-components/Top";
 
-export default function ViewSearchedPerson() {
+export default function ViewSearchedPerson({
+  widthOfWindow,
+}: {
+  widthOfWindow: number;
+}) {
   const [searchedObject, setSearchedObject] = useState<
     ViewSearchedPersonType | {}
   >({});
@@ -29,7 +34,11 @@ export default function ViewSearchedPerson() {
         (searchedObject as ViewSearchedPersonType).name ? (
           <div className="searched-profile">
             <div className="searched-profile-header">
-              <p>{(searchedObject as ViewSearchedPersonType).name}</p>
+              {/* <p>{(searchedObject as ViewSearchedPersonType).name}</p> */}
+              <Top
+                widthOfWindow={widthOfWindow}
+                title={(searchedObject as ViewSearchedPersonType).name}
+              />
               <button>
                 Block
                 <BiBlock />
@@ -61,9 +70,11 @@ export default function ViewSearchedPerson() {
           </div>
         )
       ) : (
-        <div className="enter-query-to-search-alert">
-          <p>Please enter a name to search</p>
-        </div>
+        widthOfWindow > 575 && (
+          <div className="enter-query-to-search-alert">
+            <p>Please enter a name to search</p>
+          </div>
+        )
       )}
     </div>
   );

@@ -9,11 +9,11 @@ import { GroupedUserType } from "../types/Types";
 import { groupdata } from "../data/groupdata";
 
 export default function Profile({
-  groupMessages,
   isGroup,
+  widthOfWindow,
 }: {
-  groupMessages?: boolean;
   isGroup?: boolean;
+  widthOfWindow: number;
 }) {
   const [profile, setProfile] = useState<GroupedUserType | {}>({});
   const allValues = useContext(ToggleProfile);
@@ -21,7 +21,6 @@ export default function Profile({
   const { showProfile, setShowProfile } = allValues;
 
   const { groupId } = useParams();
-  console.log(groupMessages);
   useEffect(() => {
     const getUser = groupdata.find((user) => user.id === groupId);
     setProfile(getUser || {});
@@ -99,6 +98,7 @@ export default function Profile({
         </div>
         <div className="all-members">
           <SearchComponent
+            widthOfWindow={widthOfWindow}
             noSearch
             users={(profile as GroupedUserType).members}
           />

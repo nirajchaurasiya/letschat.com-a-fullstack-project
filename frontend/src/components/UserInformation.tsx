@@ -1,6 +1,10 @@
 import "../styles/user-info.css";
 import Top from "../sub-components/Top";
-export default function UserInformation() {
+export default function UserInformation({
+  widthOfWindow,
+}: {
+  widthOfWindow: number;
+}) {
   const handleSaveChanges = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
   };
@@ -8,7 +12,7 @@ export default function UserInformation() {
   return (
     <div className="user-info-container">
       <div className="top-header user-info-header">
-        <Top title="User Information" />
+        <Top widthOfWindow={widthOfWindow} title="User Information" isProfile />
       </div>
       <div className="user-profile-mid-container">
         <div className="user-cover-image">

@@ -10,6 +10,7 @@ export type LayoutParamsType = {
   userInformation?: boolean;
   blockedAccounts?: boolean;
   deleteAccount?: boolean;
+  widthOfWindow?: number;
 };
 
 export type MessageCardType = {

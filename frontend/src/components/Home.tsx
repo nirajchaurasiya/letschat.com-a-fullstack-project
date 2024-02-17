@@ -12,6 +12,7 @@ import SearchComponent from "./SearchComponent";
 import { groupdata } from "../data/groupdata";
 import { SearchUserContext } from "../context/searchedContext";
 import UserProfile from "./UserProfile";
+import { useParams } from "react-router-dom";
 
 export default function Home({
   children,
@@ -23,6 +24,7 @@ export default function Home({
   logout,
   message,
   isGroup,
+  widthOfWindow,
 }: HomeParams) {
   const showProfileOptions = useContext(ToggleProfile);
 
@@ -33,20 +35,37 @@ export default function Home({
   if (!showProfileOptions) {
     return null;
   }
+  const { userId } = useParams();
 
   const { showProfile, setShowProfile } = showProfileOptions;
-
+  // const location = useLocation();
+  // const searchParams = new URLSearchParams(location.search);
+  // const searchQuery = searchParams.get("query");
   return (
     <section className="home-container">
       <div className="home-mid-container">
         {/* All the links container or tab simply */}
-        <div
-          className={`${
-            message ? "links-container" : "no-home-links-container"
-          }`}
-        >
-          <Linkscontainer />
-        </div>
+        {widthOfWindow && widthOfWindow < 1050 ? (
+          !userId ? (
+            <div
+              className={`${
+                message ? "links-container" : "no-home-links-container"
+              }`}
+            >
+              <Linkscontainer />
+            </div>
+          ) : (
+            ""
+          )
+        ) : (
+          <div
+            className={`${
+              message ? "links-container" : "no-home-links-container"
+            }`}
+          >
+            <Linkscontainer />
+          </div>
+        )}
 
         {/* All the user who previously connected user */}
         {home && (
@@ -79,9 +98,9 @@ export default function Home({
           <div
             className={`${
               message && showProfile
-                ? "all-users-container"
-                : "no-home-all-users-container"
-            }`}
+                ? " all-users-container "
+                : " no-home-all-users-container "
+            } `}
           >
             <div className="top-header pt-pl-6">
               <p>All Messages</p>
@@ -183,6 +202,10 @@ export default function Home({
             isGroup || (message && showProfile)
               ? "show-message-container"
               : "no-home-show-message-container"
+          } ${
+            userId && widthOfWindow && widthOfWindow < 775
+              ? " rightbar-message-fixed "
+              : ""
           }`}
         >
           {children}

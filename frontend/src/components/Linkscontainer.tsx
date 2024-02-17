@@ -24,7 +24,6 @@ export default function Linkscontainer() {
   const { logout, setLogout } = allValues;
 
   let newPathName = getLocation();
-  console.log(logout);
   return (
     <div className="links">
       <Link to="/">
@@ -96,7 +95,7 @@ export default function Linkscontainer() {
             "active"
           }`}
         >
-          <NavLink to="/profile/user-information">
+          <NavLink to={"/profile/user-information"}>
             <div>
               {newPathName === "profile" ||
               newPathName?.split("/")[0] === "profile" ? (

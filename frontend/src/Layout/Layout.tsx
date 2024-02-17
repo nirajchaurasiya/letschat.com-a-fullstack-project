@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import BlockedAccount from "../components/BlockedAccount";
 import DeleteAccount from "../components/DeleteAccount";
 import Home from "../components/Home";
@@ -7,6 +8,7 @@ import SingleMessage from "../components/SingleMessage";
 import UserInformation from "../components/UserInformation";
 import ViewSearchedPerson from "../components/ViewSearchedPerson";
 import { LayoutParamsType } from "../types/Types";
+import { useLocation } from "react-router-dom";
 
 export default function Layout({
   home,
@@ -21,6 +23,24 @@ export default function Layout({
   userInformation,
   deleteAccount,
 }: LayoutParamsType) {
+  const [widthOfWindow, setWidthOfWindow] = useState(0);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const searchQuery = searchParams.get("query");
+  useEffect(() => {
+    const handleResize = () => {
+      const windowWidth = window.outerWidth;
+      setWidthOfWindow(windowWidth);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <Home
       home={home}
@@ -34,15 +54,64 @@ export default function Layout({
       deleteAccount={deleteAccount}
       userInformation={userInformation}
       blockedAccounts={blockedAccounts}
+      widthOfWindow={widthOfWindow}
     >
-      {home && <SelectaMessage />}
+      {home && <SelectaMessage widthOfWindow={widthOfWindow} />}
       {message && <SingleMessage />}
-      {search && <ViewSearchedPerson />}
-      {groupMessages && isGroup && (
-        <Profile groupMessages={groupMessages} isGroup={isGroup} />
+      {search && searchQuery && (
+        <ViewSearchedPerson widthOfWindow={widthOfWindow} />
       )}
+      {search && widthOfWindow > 575 && !searchQuery && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+            marginTop: "30vh",
+            fontSize: "17px",
+            fontWeight: "700",
+          }}
+        >
+          <p>Search an user to view</p>
+        </div>
+      )}
+      {groupMessages && isGroup && (
+        <Profile widthOfWindow={widthOfWindow} isGroup={isGroup} />
+      )}
+      {groupMessages && widthOfWindow > 575 && !isGroup && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+            marginTop: "30vh",
+            fontSize: "17px",
+            fontWeight: "700",
+          }}
+        >
+          <p>Select a group to view</p>
+        </div>
+      )}
+      {profile &&
+        widthOfWindow > 575 &&
+        !userInformation &&
+        !blockedAccounts &&
+        !deleteAccount && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+              marginTop: "30vh",
+              fontSize: "17px",
+              fontWeight: "700",
+            }}
+          >
+            <p>Tab on left options to view</p>
+          </div>
+        )}
       {deleteAccount && <DeleteAccount />}
-      {userInformation && <UserInformation />}
+      {userInformation && <UserInformation widthOfWindow={widthOfWindow} />}
       {blockedAccounts && <BlockedAccount />}
     </Home>
   );
