@@ -17,8 +17,8 @@ export default function Register() {
       <div className="register-mid-container">
         <div className="form-control">
           <div className="form-heading">
-            <div className="logo">
-              <img src="/logo.png" alt="" />
+            <div className="logo-image">
+              <img src="/logo2.png" alt="" />
             </div>
             <p>Join Now</p>
           </div>
