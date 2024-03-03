@@ -1,3 +1,5 @@
+#Moved to https://github.com/nirajchaurasiya/lets-chat.com-v2
+
 ## A new chat app
 
 ### Upgraded version of WhatsApp
